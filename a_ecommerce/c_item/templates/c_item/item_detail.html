@@ -1,0 +1,89 @@
+{% extends 'b_core/base.html' %}
+
+{% load static %}
+
+{% block title %}Detail Product{% endblock %}
+
+
+{% block content %}
+<!-- breadcrumb part start-->
+<section class="breadcrumb_part single_product_breadcrumb">
+  <div class="container">
+    <div class="row">
+      <div class="col-lg-12">
+        <div class="breadcrumb_iner">
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+<!-- breadcrumb part end-->
+
+<!--================Single Product Area =================-->
+<div class="product_image_area">
+  <div class="container">
+    <div class="row justify-content-center">
+      <div class="col-lg-12">
+        <div class="product_img_slide owl-carousel">
+          <div class="single_product_img">
+            <img src="{{ items.image.url }}" alt="#" class="img-fluid">
+          </div>
+        </div>
+      </div>
+      <div class="col-lg-8">
+        <div class="single_product_text text-center">
+          <h3>{{items.name}}</h3>
+          <p>{{items.descriptions}}</p>
+          <div class="card_area">
+            <div class="product_count_area">
+              <p>Jumlah</p>
+              <div class="product_count d-inline-block">
+                <span class="product_count_item inumber-decrement"> <i class="ti-minus"></i></span>
+                <input class="product_count_item input-number" type="text" value="1" min="0" max="10">
+                <span class="product_count_item number-increment"> <i class="ti-plus"></i></span>
+              </div>
+              <p>Rp {{items.price}}</p>
+            </div>
+            <div class="add_to_cart">
+              <a href="#" class="btn_3">Hubungi Penjual</a>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+<section class="trending_items">
+  <div class="container">
+    <div class="row">
+      <div class="col-md-12">
+        <div class="section_tittle text-center">
+          <h2>Rekomended Product</h2>
+        </div>
+        <div class="single_product_iner">
+          <div class="row">
+            {% for item in related_items %}
+            <div class="col-lg-6 col-sm-6">
+              <div class="single_product_item">
+                <a href="{% url 'c_item:ditail-item-page' item.id %}">
+                  <img src="{{ item.image.url }}">
+                </a>
+                <h3> <a href="{% url 'c_item:ditail-item-page' item.id %}">{{item.name}}</a> </h3>
+                <p>Rp {{item.price}}</p>
+              </div>
+            </div>
+            {% endfor %}
+          </div>
+          <div class="load_more_btn text-center">
+            <a href="#" class="btn_3">Load More</a>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!--================End Single Product Area =================-->
+
+
+{% endblock %}

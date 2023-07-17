@@ -1,0 +1,93 @@
+{% extends 'd_dashboard/dashboard_base.html' %}
+{% load static %}
+
+{% block title %}Admin Tambah Blog{% endblock %}
+
+{% load widget_tweaks %}
+{% block content %}
+
+<section class="about_us">
+    <div class="container">
+        <div class="row justify-content-center">
+            <div class="login_part">
+                <div class="login_part_text text-center">
+                    <div class="login_part_text_iner">
+                        <h2>Tambah Blog disini</h2>
+                        <form class="row contact_form" action="#" method="post" novalidate="novalidate"
+                            enctype="multipart/form-data">
+                            {% csrf_token %}
+                            <div class="col-md-12 form-group mt-5">
+                                <div class="btn_3">
+                                    <div class="col-md-12 form-group p_star">
+                                        <label for="">Judul Blog</label>
+                                        {% render_field form.title class="form-control" type="text" %}
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="col-md-12 form-group">
+                                <div class="btn_3">
+                                    <div class="col-md-12 form-group p_star">
+                                        <label for="">Isi Conten 1</label>
+                                        {% render_field form.content_1 class="form-control" type="textarea" %}
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="col-md-12 form-group">
+                                <div class="btn_3">
+                                    <div class="col-md-12 form-group p_star">
+                                        <label for="">Isi Conten 2</label>
+                                        {% render_field form.content_2 class="form-control" type="textarea" %}
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="col-md-12 form-group">
+                                <div class="btn_3">
+                                    <div class="col-md-12 form-group p_star">
+                                        <label for="">Isi Conten 3</label>
+                                        {% render_field form.content_3 class="form-control" type="textarea" %}
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="col-md-12 form-group mt-5">
+                                <div class="btn_3">
+                                    <div class="col-md-12 form-group p_star">
+                                        <label for="">Category</label>
+                                        {% render_field form.category class="form-control" type="text" %}
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="col-md-12 form-group">
+                                <div class="btn_3">
+                                    <div class="col-md-12 form-group p_star">
+                                        <label for="">Gambar Blog</label>
+                                        {% render_field form.image class="form-control" %}
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="col-md-12 form-group mt-5">
+                                <button type="submit" value="submit" class="btn_3">
+                                    Tambah Blog
+                                </button>
+                            </div>
+                            <!-- Memberikan Notifikasi Jika terdapat error pada form -->
+                            {% if form.errors or form.non_field_errors %}
+                            <div class="btn_3">
+                                {% for field in form %}
+                                {{ field.errors }}
+                                {% endfor %}
+
+                                {{ form.non_field_errors }}
+                            </div>
+                            {% endif %}
+
+                        </form>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+
+<!--================login_part end =================-->
+
+{% endblock %}

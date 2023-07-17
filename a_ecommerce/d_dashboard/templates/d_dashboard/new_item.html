@@ -1,0 +1,93 @@
+{% extends 'd_dashboard/dashboard_base.html' %}
+{% load static %}
+
+{% block title %}Admin Tambah Product{% endblock %}
+
+{% load widget_tweaks %}
+{% block content %}
+
+<section class="about_us">
+    <div class="container">
+        <div class="row justify-content-center">
+            <div class="login_part">
+                <div class="login_part_text text-center">
+                    <div class="login_part_text_iner">
+                        <h2>Tambah Product disini</h2>
+                        <form class="row contact_form" action="#" method="post" novalidate="novalidate"
+                            enctype="multipart/form-data">
+                            {% csrf_token %}
+                            <div class="col-md-12 form-group mt-5">
+                                <div class="btn_3">
+                                    <div class="col-md-12 form-group p_star">
+                                        <label for="">Nama Product</label>
+                                        {% render_field form.name class="form-control" type="text" %}
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="col-md-12 form-group">
+                                <div class="btn_3">
+                                    <div class="col-md-12 form-group p_star">
+                                        <label for="">Deskripsi Product</label>
+                                        {% render_field form.descriptions class="form-control" type="textarea" %}
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="col-md-12 form-group">
+                                <div class="btn_3">
+                                    <div class="col-md-12 form-group p_star">
+                                        <label for="">Harga Product</label>
+                                        {% render_field form.price class="form-control" type="number" %}
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="col-md-12 form-group mt-5">
+                                <div class="btn_3">
+                                    <div class="col-md-12 form-group p_star">
+                                        <label for="">Category</label>
+                                        {% render_field form.category class="form-control" type="text" %}
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="col-md-12 form-group">
+                                <div class="btn_3">
+                                    <div class="col-md-12 form-group p_star">
+                                        <label for="">Gambar Product</label>
+                                        {% render_field form.image class="form-control" %}
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="col-md-12 form-group">
+                                <div class="btn_3">
+                                    <div class="col-md-12 form-group p_star">
+                                        <label for="">Ditambahkan oleh</label>
+                                        {% render_field form.create_by class="form-control" %}
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="col-md-12 form-group mt-5">
+                                <button type="submit" value="submit" class="btn_3">
+                                    Tambah Product
+                                </button>
+                            </div>
+                            <!-- Memberikan Notifikasi Jika terdapat error pada form -->
+                            {% if form.errors or form.non_field_errors %}
+                            <div class="btn_3">
+                                {% for field in form %}
+                                {{ field.errors }}
+                                {% endfor %}
+
+                                {{ form.non_field_errors }}
+                            </div>
+                            {% endif %}
+
+                        </form>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+
+<!--================login_part end =================-->
+
+{% endblock %}
